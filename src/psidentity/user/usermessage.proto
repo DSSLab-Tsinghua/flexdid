@@ -1,0 +1,70 @@
+syntax = "proto3";
+option go_package = "src/psidentity/user;user";
+
+package user;
+
+message UserConfig {
+    // Name holds the identifier of the MSP
+    string name = 1;
+    
+    // ipk represents the (serialized) issuer public key
+    bytes ipk = 2;
+    
+    // user may contain crypto material to configure a default signer
+    UserMessageConfig user = 3;
+    
+    // revocation_pk is the public key used for revocation of credentials
+    bytes revocation_pk = 4;
+    
+    // epoch represents the current epoch (time interval) used for revocation
+    int64 epoch = 5;
+    
+    // curve_id indicates which Elliptic Curve should be used
+    string curve_id = 6;
+ }
+    
+ // UserMessageConfig contains the credential material to set up an identity
+ message UserMessageConfig {
+    // cred represents the serialized idemix credential of the default signer
+    bytes cred = 1;
+    
+    // sk is the secret key of the default signer, corresponding to credential Cred
+    bytes sk = 2;
+ 
+    // organizational_unit_identifier defines the organizational unit the default signer is in
+    string organizational_unit_identifier = 3;
+
+    // role defines whether the default signer is admin, peer, member or client
+    int32 role = 4;
+
+    // enrollment_id contains the enrollment id of this signer
+    string enrollment_id = 5;
+
+    // credential_revocation_information contains a serialized CredentialRevocationInformation
+    bytes credential_revocation_information = 6;
+
+    // RevocationHandle is the handle used to single out this credential and determine its revocation status
+    string revocation_handle = 7;
+}
+
+
+
+message UserPrimaryCred {
+    bytes primary_cred = 1;
+    
+    bytes primary_cri = 2;
+ }
+
+ message UserDeriveCred {
+    bytes derive_cred = 1;
+    
+    bytes derive_cri = 2;
+ }
+
+ message UserAggregateCred {
+    bytes aggregate_cred = 1;
+    
+    bytes aggregate_cri = 2;
+ }
+
+ 
