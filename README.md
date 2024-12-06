@@ -1,5 +1,9 @@
 # Redactable PS Anonymous Identity
 
+Codebase for the following paper: 
+
+Yunqing Bian, Xin Wang, Jian Jin, Zhenzhen Jiao, and Sisi Duan. Flexible and Scalable Decentralized Identity Management for Industrial Internet of Things. IEEE Internet of Things Journal, 2024
+
 ## How to run project
 
 ```
